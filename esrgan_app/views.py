@@ -7,6 +7,12 @@ from django.http import HttpResponse
 from .forms import ImageUploadForm
 from .utils import esrgan_upscale
 
+
+
+def home(request):
+    return render(request, 'home.html')
+
+
 def upscale_image(request):
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
