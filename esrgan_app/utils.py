@@ -1,13 +1,13 @@
-# esrgan_app/utils.py
-from PIL import Image
+import os
 
-def esrgan_upscale(image):
-    # Placeholder function to upscale image using ESRGAN model
-    # Replace this function with your actual model integration code
-    # Example: 
-    # Load the image
-    img = Image.open(image)
-    # Perform upscaling using ESRGAN model
-    # Upscaled_img = Your_ESRGAN_Model(img)
-    # For now, return the same image as a placeholder
-    return img
+def get_uploaded_image_path(filename):
+    """
+    Generates the file path where the uploaded image will be stored.
+    """
+    return os.path.join('uploads', filename)
+
+def get_result_image_path(filename):
+    """
+    Generates the file path where the result image will be stored.
+    """
+    return os.path.join('results', filename)

@@ -1,11 +1,36 @@
-<!-- esrgan_app/templates/upscaled_image.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upscaled Image</title>
+    <!-- <style>
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .image-container img {
+            max-width: 50%; /* Adjust as needed */
+            max-height: 500px; /* Adjust as needed */
+        }
+    </style> -->
 </head>
 <body>
-    <h2>Upscaled Image</h2>
-    <img src="{{ upscaled_image.url }}" alt="Upscaled Image">
+    <h1>Upscaled Image</h1>
+    <div class="image-container">
+        <div style="justify-content: center;">
+            <h2>Original Image</h2>
+            <img src="data:image/jpeg;base64,{{ original_img }}" alt="Original Image" style="height: 800px; width: 800px;">
+        </div>
+        <div>
+            <h2>Upscaled Image</h2>
+            <img src="data:image/jpeg;base64,{{ upscaled_img }}" alt="Upscaled Image" style="height: 800px; width: 800px; justify-content: center;">
+        </div>
+    </div>
+    <br>
+    <!-- Download button -->
+    <a href="data:image/jpeg;base64,{{ upscaled_img }}" download="upscaled_image.jpg">
+        <button>Download Upscaled Image</button>
+    </a>
 </body>
 </html>

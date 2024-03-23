@@ -1,14 +1,17 @@
-<!-- esrgan_app/templates/upload_image.html -->
+<!-- upload_image.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
 </head>
 <body>
-    <h2>Upload Image</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <!-- Add the input element for file upload -->
+        <input type="file" name="image" id="image" accept="image/*">
+        <!-- Add a submit button -->
         <button type="submit">Upload</button>
     </form>
 </body>
