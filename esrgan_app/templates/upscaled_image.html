@@ -4,33 +4,249 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upscaled Image</title>
-    <!-- <style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2980b9, #6dd5fa);
+            color: #fff;
+        }
+        header {
+            background-color: #34495e;
+            padding: 5px 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #34495e;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #666;
+            margin-bottom: 15px;
+        }
         .image-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
         }
-        .image-container img {
-            max-width: 50%; /* Adjust as needed */
-            max-height: 500px; /* Adjust as needed */
+        .image-container div {
+            flex: 1;
+            text-align: center;
         }
-    </style> -->
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            object-fit: contain;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        /* button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #45a049;
+        } */
+
+        .downloadButton,
+.downloadButton:after {
+  width: 150px;
+  height: 76px;
+  line-height: 10px;
+  font-size: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px #00E6F6;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.downloadButton:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  
+  content: 'CLICK';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  clip-path: var(--slice-0);
+}
+
+.downloadButton:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .downloadButton,
+  .downloadButton:after {
+    width: 200px;
+    height: 86px;
+    line-height: 88px;
+  }
+}
+        a {
+            text-decoration: none;
+        }
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine-effect::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(45deg);
+            transition: all 0.8s;
+            pointer-events: none;
+        }
+        .shine-effect:hover::before {
+            top: -20%;
+            left: -30%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+        #container1{
+    max-width: 300px;
+    overflow: hidden;
+}
+#container2{
+    max-width: 300px;
+    overflow: hidden;
+}
+
+    </style>
 </head>
 <body>
-    <h1>Upscaled Image</h1>
-    <div class="image-container">
-        <div style="justify-content: center;">
-            <h2>Original Image</h2>
-            <img src="data:image/jpeg;base64,{{ original_img }}" alt="Original Image" style="height: 800px; width: 800px;">
+    <header>
+        <h1 style="color: azure;">Result</h1>
+    </header>
+    <div class="container animated">
+        <div class="image-container">
+            <div id="container1">
+                <h2>Upscaled Image</h2>
+                <img src="data:image/jpeg;base64,{{ upscaled_img }}" alt="Upscaled Image">
+            </div>
+            <div id="container2">
+                <h2>Original Image</h2>
+                <img src="data:image/jpeg;base64,{{ original_img }}" alt="Original Image">
+            </div>
+            
         </div>
-        <div>
-            <h2>Upscaled Image</h2>
-            <img src="data:image/jpeg;base64,{{ upscaled_img }}" alt="Upscaled Image" style="height: 800px; width: 800px; justify-content: center;">
-        </div>
+        <br>
+        <!-- Download button -->
+        <div style="text-align: center;"><a href="data:image/jpeg;base64,{{ upscaled_img }}" download="upscaled_image.jpg">
+            <button class="downloadButton" role="button">Download</button>
+        </a>
     </div>
-    <br>
-    <!-- Download button -->
-    <a href="data:image/jpeg;base64,{{ upscaled_img }}" download="upscaled_image.jpg">
-        <button>Download Upscaled Image</button>
-    </a>
+        
+
+    </div>
+    <footer>
+        <p style="color: gray;">Made with ❤️ by <a href="https://github.com/abdkhaleel" style="color: gray; text-decoration: none;">Abdul Khaleel</a> </p>
+    </footer>
 </body>
+
 </html>
