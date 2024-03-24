@@ -227,7 +227,7 @@
     <div class="container animated">
         <form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
             {% csrf_token %}
-            <label class="button-7" for="image">Upload File</label><br/>
+            <label class="button-7" for="image">Choose a File</label><br/>
             <input style="display: none;" type="file" name="image" id="image" accept="image/*" onchange="previewImage()">
             <div class="preview-container">
                 <img src="" alt="Preview">
