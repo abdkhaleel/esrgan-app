@@ -70,5 +70,5 @@ This project is licensed under the MIT License.
 
 ---
 
-**Author**: [Abdul Khaleel]  
+**Author**: Abdul Khaleel
 **GitHub**: https://github.com/abdkhaleel
